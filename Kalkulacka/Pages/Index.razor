@@ -1,0 +1,71 @@
+﻿@page "/"
+
+<PageTitle>Kalkulačka</PageTitle>
+
+<div class="calculator">
+    <div class="display">@currentInput</div>
+    <div class="keypad">
+        <div class="keypad-row">
+            <button @onclick="() => AddInput(7)">7</button>
+            <button @onclick="() => AddInput(8)">8</button>
+            <button @onclick="() => AddInput(9)">9</button>
+        </div>
+        <div class="keypad-row">
+            <button @onclick="() => AddInput(4)">4</button>
+            <button @onclick="() => AddInput(5)">5</button>
+            <button @onclick="() => AddInput(6)">6</button>
+        </div>
+        <div class="keypad-row">
+            <button @onclick="() => AddInput(1)">1</button>
+            <button @onclick="() => AddInput(2)">2</button>
+            <button @onclick="() => AddInput(3)">3</button>
+        </div>
+        <div class="keypad-row">
+            <button @onclick="() => AddInput(0)">0</button>
+            <button @onclick="AddDecimalPoint">.</button>
+        </div>
+        <div class="keypad-row">
+            <button @onclick="() => SetOperation('+')">+</button>
+            <button @onclick="() => SetOperation('-')">-</button>
+            <button @onclick="() => SetOperation('*')">*</button>
+            <button @onclick="() => SetOperation('/')">/</button>
+        </div>
+        <div class="keypad-row">
+            <button @onclick="CalculateResult">=</button>
+            <button @onclick="Clear">C</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string currentInput = "";
+    private double firstNumber = 0;
+    private char? operation = null;
+
+    private void AddInput(int number)
+    {
+        currentInput += number.ToString();
+    }
+
+    private void AddDecimalPoint()
+    {
+        currentInput += ".";
+    }
+
+    private void SetOperation(char op)
+    {
+        firstNumber = double.Parse(currentInput);
+        currentInput = "";
+        operation = op;
+    }
+
+    private void CalculateResult()
+    {
+        // TODO
+    }
+
+    private void Clear()
+    {
+        // TODO
+    }
+}
