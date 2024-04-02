@@ -41,6 +41,7 @@
     private string currentInput = "";
     private double firstNumber = 0;
     private char? operation = null;
+    private Calculator calculator = new Calculator();
 
     private void AddInput(int number)
     {
@@ -49,12 +50,14 @@
 
     private void AddDecimalPoint()
     {
-        currentInput += ".";
+        if (!currentInput.Contains(".")) {
+            currentInput += ".";
+        }
     }
 
     private void SetOperation(char op)
     {
-        firstNumber = double.Parse(currentInput);
+        firstNumber = double.Parse(currentInput, CultureInfo.InvariantCulture);
         currentInput = "";
         operation = op;
     }
@@ -66,6 +69,6 @@
 
     private void Clear()
     {
-        // TODO
+        currentInput = "0";
     }
 }
