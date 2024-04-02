@@ -1,27 +1,39 @@
 public class Calculator
 {
-    public int Add(int a, int b)
+    public double AktualniVysledek = 0;
+
+    public void Secti(double b)
     {
-        return a + b;
+        AktualniVysledek = AktualniVysledek + b;
     }
 
-    public int Subtract(int a, int b)
+    public void Odecti(double b)
     {
-        return a - b;
+        AktualniVysledek = AktualniVysledek - b;
     }
 
-    public int Multiply(int a, int b)
+    public void Nasob(double b)
     {
-        return a * b;
+        AktualniVysledek = AktualniVysledek * b;
     }
 
-    public int Divide(int a, int b)
+    public void Vydel(double b)
     {
         if (b == 0)
         {
             throw new DivideByZeroException("Cannot divide by zero.");
         }
 
-        return a / b;
+        AktualniVysledek =  AktualniVysledek / b;
+    }
+
+    public double VratAktualniVysledek()
+    {
+        return AktualniVysledek;
+    }
+
+    public void NastavAktualniVysledek(double novyVysledek)
+    {
+        AktualniVysledek = novyVysledek;
     }
 }

@@ -41,11 +41,17 @@
     private string currentInput = "";
     private double firstNumber = 0;
     private char? operation = null;
+
     private Calculator calculator = new Calculator();
 
     private void AddInput(int number)
     {
-        currentInput += number.ToString();
+        if (currentInput == "0") {
+            currentInput = number.ToString();
+        }
+        else {
+            currentInput += number.ToString();
+        }
     }
 
     private void AddDecimalPoint()
@@ -57,14 +63,34 @@
 
     private void SetOperation(char op)
     {
-        firstNumber = double.Parse(currentInput, CultureInfo.InvariantCulture);
+        firstNumber = double.Parse(currentInput, System.Globalization.CultureInfo.InvariantCulture);
+        calculator.AktualniVysledek = firstNumber;
         currentInput = "";
         operation = op;
     }
 
     private void CalculateResult()
     {
-        // TODO
+        double secondNumber = double.Parse(currentInput, System.Globalization.CultureInfo.InvariantCulture);
+
+        switch (operation) {
+            case '+' : 
+                calculator.Secti(secondNumber);
+                break;
+            case '-' :
+                calculator.Odecti(secondNumber);
+                break;
+            case '*' :
+                calculator.Nasob(secondNumber);
+                break;
+            case '/' :
+                calculator.Vydel(secondNumber);
+                break;
+            default :
+                break;
+        }
+
+        currentInput = calculator.VratAktualniVysledek().ToString();
     }
 
     private void Clear()
