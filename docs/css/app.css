@@ -37,18 +37,21 @@ h1:focus {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #72666673
 }
 
 .display {
     margin-bottom: 10px;
     padding: 10px;
-    background: #f9f9f9;
+    background: #f9f9f98a;
+    color:rgb(10, 10, 10);
+    font-size: 20px;
     text-align: right;
     overflow-wrap: break-word;
     text-wrap: pretty;
     border: 1px solid #ccc;
     border-radius: 5px;
-    min-height: 20px;
+    min-height: 30px;
 }
 
 .keypad {
@@ -67,5 +70,7 @@ h1:focus {
     margin: 0 2px;
     font-size: 16px;
     height: 45px;
+    border-radius: 10px;
+    border-color: #292929a3
 }
 
