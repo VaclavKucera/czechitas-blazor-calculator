@@ -2,7 +2,7 @@
 
 <PageTitle>Kalkulačka</PageTitle>
 
-<div class="calculator">
+<div class="calculator" @onkeyup=ParseKey>
     <div class="display">@currentInput</div>
     <div class="keypad">
         <div class="keypad-row">
@@ -46,17 +46,29 @@
 
     private void AddInput(int number)
     {
-        if (currentInput == "0") {
+        if (currentInput == "0")
+        {
             currentInput = number.ToString();
         }
-        else {
+        else
+        {
             currentInput += number.ToString();
+        }
+    }
+
+    private void ParseKey(KeyboardEventArgs keyboardEvent)
+    {
+        bool isInteger = int.TryParse(keyboardEvent.Key, out int parsedKey);
+        if (isInteger)
+        {
+            AddInput(parsedKey);
         }
     }
 
     private void AddDecimalPoint()
     {
-        if (!currentInput.Contains(".")) {
+        if (!currentInput.Contains("."))
+        {
             currentInput += ".";
         }
     }
@@ -73,20 +85,21 @@
     {
         double secondNumber = double.Parse(currentInput, System.Globalization.CultureInfo.InvariantCulture);
 
-        switch (operation) {
-            case '+' : 
+        switch (operation)
+        {
+            case '+':
                 calculator.Secti(secondNumber);
                 break;
-            case '-' :
+            case '-':
                 calculator.Odecti(secondNumber);
                 break;
-            case '*' :
+            case '*':
                 calculator.Nasob(secondNumber);
                 break;
-            case '/' :
+            case '/':
                 calculator.Vydel(secondNumber);
                 break;
-            default :
+            default:
                 break;
         }
 
